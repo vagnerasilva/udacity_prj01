@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VEX Bootstrap 4 Product Landing Page </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- Fonts -->
+    <!-- Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400i|Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
+
+    <!-- CSS -->
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/themefisher-fonts/themefisher-fonts.css">
+    <link rel="stylesheet" href="plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive Stylesheet -->
+</head>
+
+<body id="body">
+
+    <div id="preloader-wrapper">
+        <div class="pre-loader"></div>
+    </div>
+
+    <!-- navigation 
+    
+PROJETO
+Project: Deploying a Sentiment Analysis Model
+INICIADO
+
+Prazo para aprovação: em 4 dias
+
+    
+    -->
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                <a class="navbar-brand" href="#">Sentiment Analysis Model</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto text-center text-lg-left">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">HOME</a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">CONTACT</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- /navigation -->
+    <script>
+
+        function myFunction() {
+            var x = document.getElementById("review").value;
+            
+            //document.getElementById("demo").innerHTML = x;
+            console.log("### Enviando esse texto ###")
+            console.log(x)
+            result = valor(x)
+            console.log(result)
+
+
+
+            var para = document.createElement("p");
+            var resulh2= document.createElement("h2");
+            var resu
+            var node = document.createTextNode("");
+            var node2= document.createTextNode(result)
+            if(result<0.4){ // 0 to 3.99 is Bad
+                console.log("BAD")
+                node = document.createTextNode("BAD");
+                document.getElementById('myImage').src='images/bad.jpg'
+
+            }else if (result<0.5){ // 0.4 until 0.5  Neutral
+                console.log("Neutral")
+                node = document.createTextNode("Neutral");
+                document.getElementById('myImage').src='images/neutral.jpg'
+               
+            }else{// >0.6 is Good
+                console.log("Good")
+                node = document.createTextNode("Good");
+                document.getElementById('myImage').src='images/good.jpg'
+
+            }
+            resulh2.appendChild(node2);
+            para.appendChild(node);
+            let info = document.getElementById('div1');
+            info.removeChild(info.lastElementChild);
+            info.removeChild(info.lastElementChild);
+            
+
+            var element = document.getElementById("div1");
+            element.appendChild(resulh2);
+            element.appendChild(para);
+          
+            console.log("### Enviando esse texto ###")
+         // alert();
+          
+        }
+        function valor(x){
+            return Math.floor(Math.random() * 10 )/10;
+            /*
+            var settings = {
+            "url": "https://6554zpvsx8.execute-api.us-east-2.amazonaws.com/default/sentimentteste",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            json:true,
+            "data": JSON.stringify({"aqui":"teste"}),
+            };
+
+            $.ajax(settings).done(function (response) {
+            console.log(response);
+            
+            
+            });
+
+           */
+                
+          
+
+          
+        }
+        
+
+    </script>
+    <!-- hero area -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center mb-5 mb-md-0" id="div1"> 
+                    <img id="myImage" src="images/start.jpg" alt="">
+                    <h2></h2>
+                    <p></p>
+                </div>
+                <div class="col-md-6 align-self-center text-center text-md-left">
+                    <div class="block">
+                        <h1 class="font-weight-bold mb-4 font-size-60">Put here your text to analysis</h1>
+                        <form 
+                        method="POST"
+                        action="**REPLACE WITH PUBLIC API URL**"
+                        onsubmit="return submitForm(this);" 
+                        >
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1"> Text here</label>
+                            <textarea class="form-control"  rows="5" id="review"></textarea>
+                          </div>
+                        </form>
+                        <button type="submit" onclick="myFunction()" class="btn btn-main">Call Model</button>
+                    
+
+                    </div>
+                </div>
+            </div><!-- .row close -->
+        </div><!-- .container close -->
+    </section><!-- header close -->
+
+
+    <!-- 
+        Feature start
+        ==================== -->
+
+
+
+
+
+    <section class="call-to-action section bg-opacity bg-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 text-center mx-auto">
+                    <h2 class="subheading text-white">Sugestions and news</h2>
+                    <p class="text-white">Send your email to new releases</p>
+                    <div class="input-group">
+                        <form action="#" class="w-100">
+                            <input type="email" id="email" class="form-control" name="email" placeholder="Your Email Address Here" required>
+                            <button class="btn btn-main btn-submit" type="submit">Subscribe</button>
+                        </form>
+                    </div><!-- /input-group -->
+                </div>
+            </div>
+        </div>
+    </section><!-- #call-to-action close -->
+
+
+
+
+
+
+    <footer>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <a href="#" class="footer-logo mb-4">Sentiment Analysis Model</a>
+                        <ul class="list-inline footer-menu">
+                            <li class="list-inline-item">
+                                <a href="#">HOME</a>
+                            </li>
+
+                            <li class="list-inline-item">
+                                <a href="#contact">CONTACT</a>
+                            </li>
+                        </ul>
+                        <p class="copyright-text">Copyright &copy; <a href="http://www.focanocodigo.com.br">Focanocodigo</a>|
+                            All right reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Js -->
+    <script src="plugins/jquery-2.1.1.min.js"></script>
+    <script src="plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script src="plugins/magnific-popup/jquery.magnific.popup.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
