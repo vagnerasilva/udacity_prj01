@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>VEX Bootstrap 4 Product Landing Page </title>
+    <title>Sentiment Analysis Model Landing Page </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -72,26 +72,49 @@ Prazo para aprovação: em 4 dias
 
         function myFunction() {
             var x = document.getElementById("review").value;
-            
+            let url = "https://jicsd399ma.execute-api.us-east-2.amazonaws.com/prod/" //xgbossting model
+           // let url = "https://jicsd399ma.execute-api.us-east-2.amazonaws.com/prod/" //pytorch model
+            retryGet(url,x)
             //document.getElementById("demo").innerHTML = x;
-            console.log("### Enviando esse texto ###")
+            console.log("### Send this text ###")
             console.log(x)
-            result = valor(x)
+           
+         // alert();
+          
+        }
+
+
+        function retryGet(url,x) {
+            return new Promise((resolve, reject) => {
+                var xhr = new XMLHttpRequest();
+           
+                xhr.onload = function() {
+                    var result = parseFloat(xhr.responseText);
+                    valuechange(result)
+                    resolve(result)
+                  
+                }
+                xhr.open ("POST",url, true);
+                xhr.send (x);
+                var result3 = parseFloat(xhr.responseText);
+            })
+        }
+
+     function valuechange(result){
             console.log(result)
-
-
-
             var para = document.createElement("p");
             var resulh2= document.createElement("h2");
             var resu
             var node = document.createTextNode("");
-            var node2= document.createTextNode(result)
-            if(result<0.4){ // 0 to 3.99 is Bad
+            var percent = parseInt(result*100)
+            var percent_string = percent +"%"
+            var node2= document.createTextNode(percent_string)
+            if(result<0.45){ // 0 to 3.99 is Bad
                 console.log("BAD")
                 node = document.createTextNode("BAD");
                 document.getElementById('myImage').src='images/bad.jpg'
 
-            }else if (result<0.5){ // 0.4 until 0.5  Neutral
+            }else if (result<0.57){ // 0.4 until 0.5  Neutral
                 console.log("Neutral")
                 node = document.createTextNode("Neutral");
                 document.getElementById('myImage').src='images/neutral.jpg'
@@ -113,35 +136,13 @@ Prazo para aprovação: em 4 dias
             element.appendChild(resulh2);
             element.appendChild(para);
           
-            console.log("### Enviando esse texto ###")
-         // alert();
-          
-        }
+            console.log("### send text to page ###")
+     }
+
+
         function valor(x){
             return Math.floor(Math.random() * 10 )/10;
-            /*
-            var settings = {
-            "url": "https://6554zpvsx8.execute-api.us-east-2.amazonaws.com/default/sentimentteste",
-            "method": "POST",
-            "timeout": 0,
-            "headers": {
-                "Content-Type": "application/json"
-            },
-            json:true,
-            "data": JSON.stringify({"aqui":"teste"}),
-            };
-
-            $.ajax(settings).done(function (response) {
-            console.log(response);
-            
-            
-            });
-
-           */
-                
-          
-
-          
+ 
         }
         
 
