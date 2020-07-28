@@ -65,14 +65,18 @@ def predict_fn(input_data, model):
     if model.word_dict is None:
         raise Exception('Model has not been loaded properly, no word_dict.')
     
-    # TODO: Process input_data so that it is ready to be sent to our model.
-    #       You should produce two variables:
-    #         data_X   - A sequence of length 500 which represents the converted review
-    #         data_len - The length of the review
+    #### TODO EXPLAIN HERE #####
+    
+    # Process input_data so that it is ready to be sent to our model.
+    #   You should produce two variables:
+    #     - data_X   - A sequence of length 500 which represents the converted review
+    #     - data_len - The length of the review
+    input_words = review_to_words(input_data)
+    data_X, data_len = convert_and_pad(model.word_dict, input_words)
 
-    data_X = None
-    data_len = None
-
+    
+    #### TODO EXPLAIN HERE #####
+    
     # Using data_X and data_len we construct an appropriate input tensor. Remember
     # that our model expects input data of the form 'len, review[500]'.
     data_pack = np.hstack((data_len, data_X))
@@ -86,7 +90,14 @@ def predict_fn(input_data, model):
 
     # TODO: Compute the result of applying the model to the input data. The variable `result` should
     #       be a numpy array which contains a single integer which is either 1 or 0
+    
+    #### TODO EXPLAIN HERE #####
+    with torch.no_grad():
+        output = model.forward(data) 
 
-    result = None
+    result = np.round(output.numpy())
+    print('result is: %s', result)
+    
+    #### TODO EXPLAIN HERE #####
 
-    return result
+    return int(result)

@@ -46,7 +46,7 @@ Prazo para aprovação: em 4 dias
     <header>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                <a class="navbar-brand" href="#">Sentiment Analysis Model</a>
+                <a class="navbar-brand" href="#">Sentiment Analysis Model Pytorch</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -72,8 +72,8 @@ Prazo para aprovação: em 4 dias
 
         function myFunction() {
             var x = document.getElementById("review").value;
-            let url = "https://jicsd399ma.execute-api.us-east-2.amazonaws.com/prod/" //xgbossting model
-           // let url = "https://jicsd399ma.execute-api.us-east-2.amazonaws.com/prod/" //pytorch model
+           // let url = https://jicsd399ma.execute-api.us-east-2.amazonaws.com/prod" //xgbossting model
+            let url = "https://sknqqk32ag.execute-api.us-east-2.amazonaws.com/prod" //pytorch model
             retryGet(url,x)
             //document.getElementById("demo").innerHTML = x;
             console.log("### Send this text ###")
@@ -90,6 +90,7 @@ Prazo para aprovação: em 4 dias
            
                 xhr.onload = function() {
                     var result = parseFloat(xhr.responseText);
+                    console.log(result)
                     valuechange(result)
                     resolve(result)
                   
@@ -128,12 +129,12 @@ Prazo para aprovação: em 4 dias
             resulh2.appendChild(node2);
             para.appendChild(node);
             let info = document.getElementById('div1');
-            info.removeChild(info.lastElementChild);
+            //info.removeChild(info.lastElementChild);
             info.removeChild(info.lastElementChild);
             
 
             var element = document.getElementById("div1");
-            element.appendChild(resulh2);
+           // element.appendChild(resulh2);
             element.appendChild(para);
           
             console.log("### send text to page ###")
@@ -158,7 +159,7 @@ Prazo para aprovação: em 4 dias
                 </div>
                 <div class="col-md-6 align-self-center text-center text-md-left">
                     <div class="block">
-                        <h1 class="font-weight-bold mb-4 font-size-60">Put here your text to analysis</h1>
+                        <h1 class="font-weight-bold mb-4 font-size-60">Put here your text to sentiment analysis</h1>
                         <form 
                         method="POST"
                         action="**REPLACE WITH PUBLIC API URL**"
